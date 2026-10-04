@@ -41,6 +41,6 @@ A PostHog snippet in `<head>` loads only once `window.POSTHOG_KEY` is set to a r
 
 - [ ] **Booking link:** once a Calendly link exists, put it in place of the `mailto:` on the "Book a 15-minute call" button in the `#contact` section. Keep `data-attr="footer_cta_book_call"`. The header and hero buttons scroll to `#contact`, so they need no change.
 - [ ] **PostHog:** replace `REPLACE_WITH_POSTHOG_PROJECT_KEY` with the project key.
-- [ ] **Meta tags:** add a favicon and Open Graph tags (title, description, image).
+- [ ] **Open Graph tags:** add title, description and image for link previews. (The favicon is done: `favicon.svg`, `favicon.ico` and `apple-touch-icon.png`.)
 - [ ] **Phone number:** add one to the footer, if wanted.
 - [ ] **Stats:** "1,700+ agents" appears in the hero stats and in the About section. Update both when it changes.
