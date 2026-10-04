@@ -2,619 +2,898 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>GA Compliance Pro | Georgia Real Estate License Compliance</title>
+<meta name="description" content="Done-for-you GREC license compliance for Georgia real estate brokerages.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400;1,8..60,500&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script>
+window.POSTHOG_KEY = 'REPLACE_WITH_POSTHOG_PROJECT_KEY';
+window.POSTHOG_HOST = 'https://us.i.posthog.com';
+if (/^phc_/.test(window.POSTHOG_KEY)) {
+  !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init capture register register_once unregister identify alias reset opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing get_distinct_id get_property".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+  posthog.init(window.POSTHOG_KEY, { api_host: window.POSTHOG_HOST, person_profiles: 'identified_only' });
+}
+</script>
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
     --navy: #0F2540;
-    --navy-mid: #1A3A5C;
-    --navy-light: #2A4D73;
+    --navy-hover: #1A3A5C;
+    --navy-footer: #0A1A2E;
     --gold: #C9933A;
     --gold-light: #DBA84E;
-    --white: #FFFFFF;
-    --off-white: #F7F8FA;
-    --text: #1A2535;
-    --text-muted: #5A6A7E;
-    --border: #E2E8F0;
-    --safe-top: env(safe-area-inset-top, 0px);
-    --safe-bottom: env(safe-area-inset-bottom, 0px);
+    --gold-dark: #8A6220;
+    --text: #17202E;
+    --text-2: #374151;
+    --bg-light: #F5F6F8;
+    --border: #E4E7EC;
+    --border-2: #D5DAE1;
+    --track: #EEF0F3;
+    --serif: 'Source Serif 4', Georgia, serif;
+    --sans: 'Public Sans', system-ui, sans-serif;
+    --gutter: 32px;
+    --sec-pad: 112px;
   }
 
   html { scroll-behavior: smooth; }
 
   body {
-    font-family: 'Inter', sans-serif;
+    font-family: var(--sans);
     color: var(--text);
-    background: var(--white);
+    background: #FFFFFF;
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
   }
 
-  /* NAV */
-  nav {
-    position: sticky;
-    top: 0;
-    top: var(--safe-top);
-    background: var(--navy);
-    padding: 1rem 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 100;
-    border-bottom: 2px solid var(--gold);
+  a { color: var(--navy); }
+  a:hover { color: var(--gold-dark); }
+
+  [id] { scroll-margin-top: 68px; }
+
+  .wrap {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--sec-pad) var(--gutter);
   }
 
-  .nav-logo {
-    color: var(--white);
+  /* SHARED TEXT */
+  .label {
+    font-family: var(--sans);
+    font-size: 16px;
     font-weight: 700;
-    font-size: 1.1rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold-dark);
+    margin-bottom: 16px;
+  }
+  .dark .label { color: var(--gold-light); }
+
+  h2 {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: clamp(2.1rem, 3.8vw, 3.25rem);
+    line-height: 1.12;
+    letter-spacing: -0.02em;
+    color: var(--navy);
+    margin-bottom: 20px;
+    text-wrap: balance;
+  }
+  .dark h2 { color: #FFFFFF; }
+
+  .intro {
+    font-size: 20px;
+    line-height: 1.65;
+    color: var(--text-2);
+    text-wrap: pretty;
+  }
+
+  .dark { background: var(--navy); color: #FFFFFF; }
+  .light { background: var(--bg-light); }
+
+  .split {
+    display: grid;
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    gap: 80px;
+  }
+
+  /* BUTTONS */
+  .btn {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--navy);
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 3px;
+    text-align: center;
+    white-space: nowrap;
+    transition: background .15s;
+  }
+  .btn:hover { background: var(--gold-light); color: var(--navy); }
+  .btn-lg { padding: 18px 32px; font-size: 18px; }
+
+  /* HEADER */
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--navy);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .header-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--gutter);
+    height: 68px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: #FFFFFF;
+  }
+  .logo:hover { color: #FFFFFF; }
+
+  .logo-mark {
+    width: 30px;
+    height: 30px;
+    background: var(--gold);
+    color: var(--navy);
+    display: grid;
+    place-items: center;
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 14px;
     letter-spacing: -0.02em;
   }
 
-  .nav-logo span { color: var(--gold); }
+  .logo-text { font-weight: 600; font-size: 17px; letter-spacing: -0.01em; }
 
-  .nav-cta {
-    background: var(--gold);
-    color: var(--white);
-    padding: 0.5rem 1.25rem;
-    border-radius: 4px;
-    font-weight: 600;
-    font-size: 0.875rem;
+  .nav { display: flex; align-items: center; gap: 32px; }
+  .nav-links { display: flex; gap: 28px; }
+  .nav-links a {
+    color: rgba(255,255,255,0.82);
     text-decoration: none;
-    transition: background 0.2s;
+    font-size: 16px;
+    font-weight: 500;
   }
-
-  .nav-cta:hover { background: var(--gold-light); }
+  .nav-links a:hover { color: #FFFFFF; }
+  .nav .btn { padding: 10px 18px; font-size: 15px; }
 
   /* HERO */
-  .hero {
-    background: var(--navy);
-    color: var(--white);
-    padding: 5rem 2rem 5rem;
-    position: relative;
-    overflow: hidden;
-  }
+  .hero .wrap { padding-top: 96px; padding-bottom: 96px; }
 
-  .hero::before {
-    content: '';
-    position: absolute;
-    top: 0; right: 0;
-    width: 40%;
-    height: 100%;
-    background: linear-gradient(135deg, transparent 0%, rgba(201,147,58,0.07) 100%);
-    pointer-events: none;
-  }
-
-  .hero-inner {
-    max-width: 800px;
-    margin: 0 auto;
-  }
-
-  .hero-eyebrow {
-    color: var(--gold);
-    font-size: 0.8rem;
-    font-weight: 600;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    margin-bottom: 1.25rem;
-  }
+  .hero .label { margin-bottom: 28px; }
 
   .hero h1 {
-    font-size: clamp(2rem, 5vw, 3.25rem);
-    font-weight: 800;
-    line-height: 1.1;
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: clamp(2.75rem, 6.4vw, 5.5rem);
+    line-height: 1.02;
     letter-spacing: -0.03em;
-    margin-bottom: 1.5rem;
-    max-width: 680px;
+    margin-bottom: 28px;
+    max-width: 980px;
+    text-wrap: balance;
   }
-
-  .hero h1 em {
-    font-style: normal;
-    color: var(--gold);
-  }
+  .hero h1 em { font-style: italic; color: var(--gold-light); }
 
   .hero-sub {
-    font-size: 1.125rem;
-    color: rgba(255,255,255,0.75);
-    max-width: 560px;
-    margin-bottom: 2.5rem;
-    line-height: 1.7;
+    font-size: 21px;
+    line-height: 1.55;
+    color: rgba(255,255,255,0.86);
+    max-width: 680px;
+    margin-bottom: 40px;
+    text-wrap: pretty;
   }
 
   .hero-actions {
     display: flex;
-    gap: 1rem;
     flex-wrap: wrap;
     align-items: center;
+    gap: 16px 28px;
   }
 
-  .btn-primary {
-    background: var(--gold);
-    color: var(--white);
-    padding: 0.875rem 2rem;
-    border-radius: 4px;
-    font-weight: 700;
-    font-size: 1rem;
-    text-decoration: none;
-    display: inline-block;
-    transition: background 0.2s, transform 0.1s;
+  .link-underline {
+    color: #FFFFFF;
+    font-weight: 500;
+    font-size: 18px;
+    text-decoration: underline;
+    text-underline-offset: 5px;
+    text-decoration-color: rgba(255,255,255,0.35);
   }
+  .link-underline:hover { color: var(--gold-light); }
 
-  .btn-primary:hover {
-    background: var(--gold-light);
-    transform: translateY(-1px);
-  }
-
-  .hero-note {
-    color: rgba(255,255,255,0.5);
-    font-size: 0.875rem;
-  }
-
-  /* STAT BAR */
-  .stat-bar {
-    background: var(--gold);
-    padding: 1.5rem 2rem;
-  }
-
-  .stat-bar-inner {
-    max-width: 900px;
-    margin: 0 auto;
+  .stats {
+    margin-top: 64px;
+    border-top: 1px solid rgba(255,255,255,0.16);
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
-    text-align: center;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
-
-  .stat-item strong {
-    display: block;
-    font-size: clamp(1.5rem, 4vw, 2.25rem);
-    font-weight: 800;
-    color: var(--navy);
+  .stat { padding: 28px 16px 0 0; }
+  .stat-value {
+    font-family: var(--serif);
+    font-size: clamp(1.9rem, 4vw, 3rem);
     line-height: 1;
-    letter-spacing: -0.03em;
+    letter-spacing: -0.02em;
   }
+  .stat-label { font-size: 17px; color: rgba(255,255,255,0.8); margin-top: 10px; }
 
-  .stat-item span {
-    font-size: 0.8rem;
-    font-weight: 600;
-    color: var(--navy);
-    opacity: 0.75;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-  }
-
-  /* SECTIONS */
-  section { padding: 4rem 2rem; }
-
-  .section-inner {
-    max-width: 860px;
-    margin: 0 auto;
-  }
-
-  .section-label {
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 0.75rem;
-  }
-
-  .section-inner h2 {
-    font-size: clamp(1.5rem, 3vw, 2.25rem);
-    font-weight: 800;
-    color: var(--navy);
-    letter-spacing: -0.03em;
-    line-height: 1.2;
-    margin-bottom: 1rem;
-    max-width: 600px;
-  }
-
-  .section-inner p {
-    color: var(--text-muted);
-    font-size: 1.0625rem;
-    max-width: 620px;
-    margin-bottom: 1rem;
-    line-height: 1.75;
-  }
-
-  /* PROBLEM SECTION */
-  .problem { background: var(--off-white); }
-
-  .problem-grid {
+  /* JOINED GRID (problem cards, pricing tiers) */
+  .joined {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.5rem;
-    margin-top: 2.5rem;
-  }
-
-  .problem-card {
-    background: var(--white);
+    gap: 1px;
+    background: var(--border);
     border: 1px solid var(--border);
-    border-radius: 6px;
-    padding: 1.5rem;
   }
+  .joined > * { background: #FFFFFF; }
 
-  .problem-card h3 {
-    font-size: 1rem;
-    font-weight: 700;
-    color: var(--navy);
-    margin-bottom: 0.5rem;
+  /* PROBLEM */
+  .problems { grid-template-columns: repeat(2, minmax(0, 1fr)); align-self: start; }
+  .problem { padding: 28px; }
+  .problem h3 { font-size: 23px; font-weight: 600; color: var(--navy); line-height: 1.4; }
+  .problem button {
+    all: unset;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    cursor: default;
   }
-
-  .problem-card p {
-    font-size: 0.9rem;
-    color: var(--text-muted);
-    margin: 0;
-    line-height: 1.6;
-  }
-
-  .problem-card .icon {
-    font-size: 1.25rem;
-    margin-bottom: 0.75rem;
-    display: block;
-  }
+  .problem .toggle-icon { display: none; font-size: 24px; line-height: 1; color: var(--gold-dark); font-weight: 400; }
+  .problem p { font-size: 18px; line-height: 1.6; color: var(--text-2); margin-top: 8px; }
 
   /* HOW IT WORKS */
-  .how-it-works { background: var(--white); }
+  .section-intro { max-width: 720px; margin-bottom: 56px; }
 
-  .timeline {
-    margin-top: 2.5rem;
-    border-left: 2px solid var(--gold);
-    padding-left: 2rem;
+  .steps {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 16px;
+  }
+  .step {
+    background: #FFFFFF;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
-    gap: 2rem;
   }
-
-  .timeline-item {
-    position: relative;
-  }
-
-  .timeline-item::before {
-    content: '';
-    position: absolute;
-    left: -2.6rem;
-    top: 0.35rem;
-    width: 10px;
-    height: 10px;
-    background: var(--gold);
-    border-radius: 50%;
-    border: 2px solid var(--white);
-    outline: 2px solid var(--gold);
-  }
-
-  .timeline-item .month {
-    font-size: 0.75rem;
-    font-weight: 700;
-    color: var(--gold);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    margin-bottom: 0.25rem;
-  }
-
-  .timeline-item h3 {
-    font-size: 1rem;
-    font-weight: 700;
-    color: var(--navy);
-    margin-bottom: 0.35rem;
-  }
-
-  .timeline-item p {
-    font-size: 0.9rem;
-    color: var(--text-muted);
-    margin: 0;
-    line-height: 1.6;
-  }
-
-  /* WHAT YOU GET */
-  .what-you-get { background: var(--navy); color: var(--white); }
-
-  .what-you-get .section-inner h2 { color: var(--white); }
-
-  .features-grid {
+  .step-track { height: 4px; background: var(--track); }
+  .step-track span { display: block; height: 4px; background: var(--gold); }
+  .step-inner {
+    padding: 32px 28px;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.25rem;
-    margin-top: 2.5rem;
+    grid-template-columns: 1fr;
+    gap: 8px 20px;
+    align-content: start;
   }
+  .step-num {
+    font-family: var(--serif);
+    font-size: 56px;
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    color: var(--navy);
+  }
+  .step-unit { margin: 8px 0 0; }
+  .step-body { padding-top: 20px; }
+  .step h3 { font-size: 23px; font-weight: 600; color: var(--navy); margin-bottom: 8px; line-height: 1.4; }
+  .step p.step-desc { font-size: 18px; line-height: 1.6; color: var(--text-2); }
 
+  /* WHAT'S INCLUDED */
+  .included .split { align-items: start; }
+  .included h2 { margin-bottom: 0; }
+  .features { border-top: 1px solid rgba(255,255,255,0.18); }
   .feature {
-    border: 1px solid rgba(255,255,255,0.1);
-    border-radius: 6px;
-    padding: 1.5rem;
-    background: rgba(255,255,255,0.04);
+    display: grid;
+    grid-template-columns: 140px minmax(0, 1fr);
+    gap: 8px 32px;
+    padding: 32px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.18);
   }
+  .feature .label { padding-top: 6px; margin: 0; }
+  .feature h3 { font-size: 25px; font-weight: 600; line-height: 1.3; margin-bottom: 10px; }
+  .feature p.feature-desc { font-size: 18px; line-height: 1.65; color: rgba(255,255,255,0.86); text-wrap: pretty; }
 
-  .feature-check {
-    color: var(--gold);
-    font-size: 1.1rem;
-    margin-bottom: 0.75rem;
-    display: block;
+  /* PRICING */
+  #pricing .section-intro { margin-bottom: 48px; }
+  .tiers { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .tier { padding: 32px 28px; display: flex; flex-direction: column; }
+  .tier h3 { font-size: 24px; font-weight: 600; line-height: 1.3; color: var(--navy); }
+  .tier-scope { font-size: 18px; color: var(--text-2); margin-top: 4px; }
+  .tier-price {
+    margin-top: auto;
+    padding-top: 28px;
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    font-size: 18px;
+    color: var(--text-2);
   }
-
-  .feature h3 {
-    font-size: 0.975rem;
-    font-weight: 700;
-    color: var(--white);
-    margin-bottom: 0.4rem;
+  .tier-price strong {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: 48px;
+    line-height: 1;
+    color: var(--navy);
+    letter-spacing: -0.02em;
   }
-
-  .feature p {
-    font-size: 0.875rem;
-    color: rgba(255,255,255,0.55);
-    margin: 0;
-    line-height: 1.6;
+  .pricing-notes {
+    margin-top: 24px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 12px 32px;
+    font-size: 19px;
+    color: var(--text-2);
   }
-
-  /* WHY IT MATTERS */
-  .why-matters { background: var(--off-white); }
-
-  .callout {
-    background: var(--navy);
-    color: var(--white);
-    border-radius: 8px;
-    padding: 2rem;
-    margin-top: 2rem;
-    border-left: 4px solid var(--gold);
-  }
-
-  .callout p {
-    color: rgba(255,255,255,0.85);
-    font-size: 1.05rem;
-    margin: 0;
-    line-height: 1.7;
-  }
+  .pricing-notes strong { font-weight: 600; color: var(--navy); }
 
   /* ABOUT */
-  .about { background: var(--white); }
+  #about { border-top: 1px solid var(--border); }
+  #about .split { align-items: center; }
+  .photo { aspect-ratio: 4 / 5; max-width: 420px; width: 100%; }
+  .photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 20%;
+    display: block;
+    border-radius: 4px;
+  }
+  .about-text { max-width: 620px; }
+  .about-text h2 { margin-bottom: 24px; }
+  .about-text .intro + .intro { margin-top: 16px; }
+  .read-more {
+    all: unset;
+    display: none;
+    cursor: pointer;
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--navy);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    margin-top: 16px;
+  }
+  .signature { margin-top: 28px; padding-top: 20px; border-top: 1px solid var(--border); }
+  .signature-name { font-weight: 600; color: var(--navy); font-size: 19px; }
+  .signature-role { font-size: 17px; color: var(--text-2); }
 
-  /* CTA SECTION */
-  .cta-section {
-    background: var(--navy);
-    text-align: center;
-    padding: 5rem 2rem;
+  /* FAQ */
+  #faq h2 { margin-bottom: 32px; }
+  .faqs {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0 48px;
+    align-items: start;
+  }
+  .faq { border-top: 1px solid var(--border-2); }
+  .faq button {
+    all: unset;
+    box-sizing: border-box;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 0;
+    min-height: 56px;
+    cursor: pointer;
+  }
+  .faq-q { font-size: 18px; font-weight: 600; line-height: 1.35; color: var(--navy); }
+  .faq-icon { font-size: 22px; line-height: 1; color: var(--gold-dark); flex: none; }
+  .faq-a {
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--text-2);
+    padding: 0 32px 18px 0;
+    text-wrap: pretty;
+    white-space: pre-line;
   }
 
-  .cta-section h2 {
-    font-size: clamp(1.75rem, 4vw, 2.75rem);
-    font-weight: 800;
-    color: var(--white);
-    letter-spacing: -0.03em;
-    margin-bottom: 1rem;
-    line-height: 1.15;
+  /* Focus rings for buttons reset with all: unset */
+  .problem button:focus-visible,
+  .faq button:focus-visible,
+  .read-more:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 4px;
   }
 
-  .cta-section p {
-    color: rgba(255,255,255,0.65);
-    font-size: 1.0625rem;
-    max-width: 480px;
-    margin: 0 auto 2rem;
-    line-height: 1.7;
+  /* CONTACT */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+    gap: 40px;
+    align-items: center;
   }
+  #contact h2 {
+    font-size: clamp(2rem, 4vw, 3.25rem);
+    line-height: 1.08;
+    margin-bottom: 16px;
+  }
+  .contact-sub {
+    font-size: 21px;
+    line-height: 1.55;
+    color: rgba(255,255,255,0.86);
+    max-width: 540px;
+  }
+  .contact-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 14px;
+    width: 100%;
+  }
+  .contact-email { font-size: 18px; color: rgba(255,255,255,0.82); }
+  .contact-email a { color: #FFFFFF; text-underline-offset: 3px; }
+  .contact-email a:hover { color: var(--gold-light); }
 
   /* FOOTER */
   footer {
-    background: #080F18;
-    color: rgba(255,255,255,0.4);
-    text-align: center;
-    padding: 2rem;
-    padding-bottom: calc(2rem + var(--safe-bottom));
-    font-size: 0.8rem;
+    background: var(--navy-footer);
+    color: rgba(255,255,255,0.7);
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+  .footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 28px var(--gutter);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 12px 32px;
+    font-size: 15px;
+  }
+  footer a { color: rgba(255,255,255,0.85); text-decoration: none; }
+  footer a:hover { color: var(--gold-light); }
+
+  /* MD: under 980px */
+  @media (max-width: 979px) {
+    :root { --sec-pad: 80px; }
+    .nav-links { display: none; }
+    .hero .wrap { padding-top: 80px; padding-bottom: 72px; }
+    .split, .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+    .contact-actions { align-items: flex-start; }
+    .steps { grid-template-columns: 1fr; gap: 12px; }
+    .step-inner { padding: 24px; grid-template-columns: 120px minmax(0, 1fr); }
+    .step-body { padding-top: 4px; }
+    .tiers { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .faqs { grid-template-columns: 1fr; }
   }
 
-  footer a {
-    color: rgba(255,255,255,0.5);
-    text-decoration: none;
-  }
+  /* SM: under 640px */
+  @media (max-width: 639px) {
+    :root { --gutter: 20px; --sec-pad: 56px; }
+    .hero .wrap { padding-top: 56px; padding-bottom: 56px; }
+    .hero-sub, .contact-sub { font-size: 18px; }
+    .btn-lg { width: 100%; }
+    .stats { margin-top: 48px; }
+    .stat-label { font-size: 15px; }
+    .intro { font-size: 18px; }
+    .section-intro { margin-bottom: 36px; }
 
-  footer a:hover { color: var(--gold); }
+    .problems { grid-template-columns: 1fr; }
+    .problem { padding: 20px; }
+    .problem h3 { font-size: 20px; }
+    .problem button { cursor: pointer; }
+    .problem .toggle-icon { display: inline; }
+    .problem p { font-size: 17px; display: none; }
+    .problem.open p { display: block; }
 
-  /* RESPONSIVE */
-  @media (max-width: 640px) {
-    nav { padding: 1rem; }
-    .hero { padding: 3.5rem 1.25rem 3.5rem; }
-    .stat-bar-inner { grid-template-columns: repeat(3, 1fr); gap: 0.5rem; }
-    .problem-grid { grid-template-columns: 1fr; }
-    .features-grid { grid-template-columns: 1fr; }
-    section { padding: 3rem 1.25rem; }
+    .step-inner { grid-template-columns: 1fr; }
+    .step-num { font-size: 44px; }
+    .step-body { padding-top: 12px; }
+    .step p.step-desc { font-size: 17px; }
+
+    .feature { grid-template-columns: 1fr; }
+    .feature p.feature-desc { font-size: 17px; }
+
+    .tiers { grid-template-columns: 1fr; }
+
+    #about .about-more { display: none; }
+    #about.expanded .about-more { display: block; }
+    .read-more { display: inline-block; }
+    #about.expanded .read-more { display: none; }
+
+    #faq h2 { margin-bottom: 24px; }
+    .faq button { padding: 18px 0; }
+    .faq-q { font-size: 17px; }
+    .faq-a { padding: 0 0 20px 0; }
   }
 
   @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
     * { transition: none !important; }
   }
 </style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav>
-  <div class="nav-logo">GA<span>Compliance</span>Pro</div>
-  <a href="#contact" class="nav-cta">Book a Call</a>
-</nav>
+<header>
+  <div class="header-inner">
+    <a href="#top" class="logo" aria-label="GA Compliance Pro home">
+      <span class="logo-mark">GA</span>
+      <span class="logo-text">Compliance Pro</span>
+    </a>
+    <nav class="nav">
+      <div class="nav-links">
+        <a href="#how" data-attr="nav_how">How it works</a>
+        <a href="#included" data-attr="nav_included">What's included</a>
+        <a href="#pricing" data-attr="nav_pricing">Pricing</a>
+        <a href="#about" data-attr="nav_about">About</a>
+      </div>
+      <a href="#contact" class="btn" data-attr="nav_book_call">Book a call</a>
+    </nav>
+  </div>
+</header>
+
+<main>
 
 <!-- HERO -->
-<section class="hero">
-  <div class="hero-inner">
-    <p class="hero-eyebrow">Georgia Real Estate License Compliance</p>
-    <h1>Your agents' licenses,<br><em>tracked automatically.</em></h1>
-    <p class="hero-sub">A done-for-you compliance service that monitors GREC renewal deadlines, sends agents personalized reminders, and delivers monthly reports to your leadership — without anyone on your staff lifting a finger.</p>
+<section id="top" class="hero dark">
+  <div class="wrap">
+    <p class="label">Georgia Real Estate License Compliance</p>
+    <h1>Agent license renewals, <em>off your plate.</em></h1>
+    <p class="hero-sub">A done-for-you compliance service that tracks every agent's GREC renewal deadline, sends agents personalized reminders, and delivers monthly reports to your leadership — without anyone on your team lifting a finger.</p>
     <div class="hero-actions">
-      <a href="#contact" class="btn-primary">Book a 15-Minute Call</a>
-      <span class="hero-note">Serving Georgia brokerages of all sizes</span>
+      <a href="#contact" class="btn btn-lg" data-attr="hero_book_call">Book a 15-minute call</a>
+      <a href="#pricing" class="link-underline" data-attr="hero_see_pricing">See pricing</a>
+    </div>
+    <div class="stats">
+      <div class="stat">
+        <p class="stat-value">1,700+</p>
+        <p class="stat-label">Agents tracked</p>
+      </div>
+      <div class="stat">
+        <p class="stat-value">~90%</p>
+        <p class="stat-label">Reduction in lapses</p>
+      </div>
+      <div class="stat">
+        <p class="stat-value">2024</p>
+        <p class="stat-label">Established</p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- STAT BAR -->
-<div class="stat-bar">
-  <div class="stat-bar-inner">
-    <div class="stat-item">
-      <strong>1,700+</strong>
-      <span>Agents Tracked</span>
+<!-- THE PROBLEM -->
+<section>
+  <div class="wrap split">
+    <div>
+      <p class="label">The problem</p>
+      <h2>Every broker knows: busy agents need reminding about their CEs.</h2>
+      <p class="intro">GREC doesn't send renewal reminders. In some offices, a staff member checks GREC every month and emails agents one by one. In others, nobody does, and agents are left to remember on their own. Either way, it works… until it doesn't.</p>
     </div>
-    <div class="stat-item">
-      <strong>~90%</strong>
-      <span>Reduction in Lapses</span>
-    </div>
-    <div class="stat-item">
-      <strong>6</strong>
-      <span>Offices Served</span>
-    </div>
-  </div>
-</div>
-
-<!-- PROBLEM -->
-<section class="problem">
-  <div class="section-inner">
-    <p class="section-label">The Problem</p>
-    <h2>GREC doesn't send renewal reminders. Someone on your team does.</h2>
-    <p>Most offices rely on a staff member to manually check GREC every month, pull expiring licenses, and email agents individually. It works — until it doesn't.</p>
-
-    <div class="problem-grid">
-      <div class="problem-card">
-        <span class="icon">🏖️</span>
-        <h3>Vacation gaps</h3>
-        <p>When the person who tracks compliance is out, nothing gets checked. Agents don't find out until it's too late.</p>
+    <div class="joined problems">
+      <div class="problem">
+        <h3><button type="button" data-attr="problem_card_toggle" aria-controls="problem-1">Wasted staff time<span class="toggle-icon" aria-hidden="true">+</span></button></h3>
+        <p id="problem-1">Manually navigating GREC, building spreadsheets, and sending individual emails is hours of work every single month.</p>
       </div>
-      <div class="problem-card">
-        <span class="icon">⏱️</span>
-        <h3>Wasted staff time</h3>
-        <p>Manually navigating GREC, building spreadsheets, and sending individual emails is hours of work every single month.</p>
+      <div class="problem">
+        <h3><button type="button" data-attr="problem_card_toggle" aria-controls="problem-2">Broker liability<span class="toggle-icon" aria-hidden="true">+</span></button></h3>
+        <p id="problem-2">An agent practicing under a lapsed license exposes the broker of record to fines, complaints, and closing complications.</p>
       </div>
-      <div class="problem-card">
-        <span class="icon">⚠️</span>
-        <h3>Broker liability</h3>
-        <p>An agent practicing under a lapsed license exposes the broker of record to fines, complaints, and closing complications.</p>
+      <div class="problem">
+        <h3><button type="button" data-attr="problem_card_toggle" aria-controls="problem-3">Agents left in the dark<span class="toggle-icon" aria-hidden="true">+</span></button></h3>
+        <p id="problem-3">Busy agents don't always remember their renewal deadline. Without reminders, lapses happen — even to good agents.</p>
       </div>
-      <div class="problem-card">
-        <span class="icon">📭</span>
-        <h3>Agents left in the dark</h3>
-        <p>Busy agents don't always remember their renewal deadline. Without reminders, lapses happen — even to good agents.</p>
+      <div class="problem">
+        <h3><button type="button" data-attr="problem_card_toggle" aria-controls="problem-4">Vacation gaps<span class="toggle-icon" aria-hidden="true">+</span></button></h3>
+        <p id="problem-4">When the person who tracks compliance is out, nothing gets checked. Agents don't find out until it's too late.</p>
       </div>
     </div>
   </div>
 </section>
 
 <!-- HOW IT WORKS -->
-<section class="how-it-works">
-  <div class="section-inner">
-    <p class="section-label">How It Works</p>
-    <h2>Agents are reminded early, often, and automatically.</h2>
-    <p>We cross-reference your office roster against GREC every month and send each agent personalized renewal reminders on a structured timeline — no manual work required.</p>
+<section id="how" class="light">
+  <div class="wrap">
+    <div class="section-intro">
+      <p class="label">How it works</p>
+      <h2>Agents are reminded early, often, and automatically.</h2>
+      <p class="intro">We cross-reference your office roster against GREC every single month and send each agent personalized renewal reminders for their remaining CEs, Law, Broker CEs, COE/FH on a structured timeline — no manual work from your team required.</p>
+    </div>
+    <ol class="steps">
+      <li class="step">
+        <div class="step-track"><span style="width:25%"></span></div>
+        <div class="step-inner">
+          <div>
+            <p class="step-num">1</p>
+            <p class="label step-unit">Year out</p>
+          </div>
+          <div class="step-body">
+            <h3>Early heads-up</h3>
+            <p class="step-desc">Agents are notified well in advance, so they have time to sign up for their classes and complete them.</p>
+          </div>
+        </div>
+      </li>
+      <li class="step">
+        <div class="step-track"><span style="width:50%"></span></div>
+        <div class="step-inner">
+          <div>
+            <p class="step-num">6</p>
+            <p class="label step-unit">Months out</p>
+          </div>
+          <div class="step-body">
+            <h3>Progress check-in</h3>
+            <p class="step-desc">A second reminder with updated CE status — time to start completing hours if they haven't already.</p>
+          </div>
+        </div>
+      </li>
+      <li class="step">
+        <div class="step-track"><span style="width:75%"></span></div>
+        <div class="step-inner">
+          <div>
+            <p class="step-num">3</p>
+            <p class="label step-unit">Months out</p>
+          </div>
+          <div class="step-body">
+            <h3>Urgent reminder</h3>
+            <p class="step-desc">Clear, direct nudge. This is when most agents take action on their CEs.</p>
+          </div>
+        </div>
+      </li>
+      <li class="step">
+        <div class="step-track"><span style="width:92%"></span></div>
+        <div class="step-inner">
+          <div>
+            <p class="step-num">2 &amp; 1</p>
+            <p class="label step-unit">Months out</p>
+          </div>
+          <div class="step-body">
+            <h3>Final notices</h3>
+            <p class="step-desc">Last-chance reminders for anyone who hasn't renewed. Leadership is looped in so no one falls through the cracks.</p>
+          </div>
+        </div>
+      </li>
+    </ol>
+  </div>
+</section>
 
-    <div class="timeline">
-      <div class="timeline-item">
-        <p class="month">11 months out</p>
-        <h3>Early heads-up</h3>
-        <p>Agents are notified well in advance, with their current CE hours, Law completion, Code of Ethics, and Fair Housing status included.</p>
+<!-- WHAT'S INCLUDED -->
+<section id="included" class="included dark">
+  <div class="wrap split">
+    <div>
+      <p class="label">What's included</p>
+      <h2>Everything your office needs. Nothing it doesn't.</h2>
+    </div>
+    <div class="features">
+      <div class="feature">
+        <p class="label">01 Tracking</p>
+        <div>
+          <h3>Automated renewal tracking</h3>
+          <p class="feature-desc">We pull directly from GREC every month and track CE, Law, Code of Ethics and Fair Housing against both GREC and NAR requirements. When GREC, GAR or NAR rules change, we update them.</p>
+        </div>
       </div>
-      <div class="timeline-item">
-        <p class="month">6 months out</p>
-        <h3>Progress check-in</h3>
-        <p>A second reminder with updated CE status — time to start completing hours if they haven't already.</p>
+      <div class="feature">
+        <p class="label">02 Reminders</p>
+        <div>
+          <h3>Personalized agent and broker emails</h3>
+          <p class="feature-desc">Agents and brokers each get their own status, including the new broker CE requirements. Notification timelines and leadership loop-ins adjust to how your office runs.</p>
+        </div>
       </div>
-      <div class="timeline-item">
-        <p class="month">3 months out</p>
-        <h3>Urgent reminder</h3>
-        <p>Clear, direct nudge. This is when most agents take action.</p>
+      <div class="feature">
+        <p class="label">03 Reporting</p>
+        <div>
+          <h3>Monthly leadership report</h3>
+          <p class="feature-desc">Delivered to your team every month, on time: who was reminded, their renewal window and CE status, and anyone we couldn't reach because of a GREC mismatch, a missing roster entry or a bounced email. Read receipts available on request.</p>
+        </div>
       </div>
-      <div class="timeline-item">
-        <p class="month">2 & 1 month out</p>
-        <h3>Final notices</h3>
-        <p>Last-chance reminders for anyone who hasn't renewed. Leadership is looped in so no one falls through the cracks.</p>
-      </div>
-      <div class="timeline-item">
-        <p class="month">Every month</p>
-        <h3>Leadership report</h3>
-        <p>A full compliance report delivered to your team — who's current, who's behind, and who's been reminded. Read receipts available on request.</p>
+      <div class="feature">
+        <p class="label">04 Lapse alerts</p>
+        <div>
+          <h3>Know about lapses within days</h3>
+          <p class="feature-desc">Most licenses lapse silently. Our report flags any agent who drops off GREC near their deadline, so you find out within a few days, not in the middle of their next closing.</p>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- WHAT YOU GET -->
-<section class="what-you-get">
-  <div class="section-inner">
-    <p class="section-label" style="color: var(--gold);">What's Included</p>
-    <h2>Everything your office needs. Nothing it doesn't.</h2>
-
-    <div class="features-grid">
-      <div class="feature">
-        <span class="feature-check">✓</span>
-        <h3>Automated renewal tracking</h3>
-        <p>We pull directly from GREC every month — no spreadsheets, no manual checks.</p>
+<!-- PRICING -->
+<section id="pricing" class="light">
+  <div class="wrap">
+    <div class="section-intro">
+      <p class="label">Pricing</p>
+      <h2>Priced by office size.</h2>
+      <p class="intro">Every plan includes everything above. It pays for itself the first time it prevents a lapse.</p>
+    </div>
+    <div class="joined tiers">
+      <div class="tier">
+        <h3>Under 100 agents</h3>
+        <p class="tier-scope">Single office</p>
+        <p class="tier-price"><strong>$250</strong>/mo</p>
       </div>
-      <div class="feature">
-        <span class="feature-check">✓</span>
-        <h3>Personalized agent emails</h3>
-        <p>Each agent gets their own CE status, tailored to where they are in the renewal cycle.</p>
+      <div class="tier">
+        <h3>100–500 agents</h3>
+        <p class="tier-scope">Single office</p>
+        <p class="tier-price"><strong>$450</strong>/mo</p>
       </div>
-      <div class="feature">
-        <span class="feature-check">✓</span>
-        <h3>Monthly leadership report</h3>
-        <p>Delivered to your team every single month, on time, without being asked.</p>
+      <div class="tier">
+        <h3>500+ agents</h3>
+        <p class="tier-scope">Single office</p>
+        <p class="tier-price"><strong>$950</strong>/mo</p>
       </div>
-      <div class="feature">
-        <span class="feature-check">✓</span>
-        <h3>Read receipt tracking</h3>
-        <p>Know exactly who opened their reminder and when. Available to leadership on request.</p>
-      </div>
-      <div class="feature">
-        <span class="feature-check">✓</span>
-        <h3>CE, Law, COE & Fair Housing</h3>
-        <p>We track all four completion requirements — not just the basics.</p>
-      </div>
-      <div class="feature">
-        <span class="feature-check">✓</span>
-        <h3>Zero ongoing effort</h3>
-        <p>Fully independent. Runs every month without any action required from your team.</p>
+      <div class="tier">
+        <h3>Multi-office</h3>
+        <p class="tier-scope">Any number of agents</p>
+        <p class="tier-price"><strong>$1,500+</strong>/mo</p>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- WHY IT MATTERS -->
-<section class="why-matters">
-  <div class="section-inner">
-    <p class="section-label">Why It Matters</p>
-    <h2>For brokers, this is leverage.</h2>
-    <p>A lapsed license isn't just an inconvenience — it's a liability. Brokers with agents practicing on expired licenses can face GREC fines, complaints, and serious complications at closing.</p>
-    <p>This service eliminates that risk and frees your office staff from one of the most tedious recurring tasks of the month. It's the kind of system that pays for itself the first time it prevents a lapse.</p>
-
-    <div class="callout">
-      <p>"GREC doesn't send renewal reminders — that responsibility falls on each licensee and their broker. If your office isn't tracking this, your agents are on their own."</p>
+    <div class="pricing-notes">
+      <p>All plans include a one-time <strong>$250 setup fee</strong>.</p>
+      <p>Not sure which tier fits? We'll confirm on the call.</p>
     </div>
   </div>
 </section>
 
 <!-- ABOUT -->
-<section class="about">
-  <div class="section-inner">
-    <p class="section-label">About</p>
-    <h2>Built by a Georgia Realtor, for Georgia brokerages.</h2>
-    <p>GA Compliance Pro was founded by Caitlyn Verdugo, a licensed Georgia Realtor with Keller Williams Metro Atlanta. What started as an internal compliance system for a handful of KW offices grew into a service that now tracks over 1,700 agents across metro Atlanta.</p>
-    <p>Since implementing this system, license lapses across our current offices have dropped by roughly 90%. We built it because the problem was real and the existing solutions weren't working.</p>
-    <p style="margin-bottom: 0;">We know Georgia licensing. We know GREC. And we know how much time your team spends on something that should run itself.</p>
+<section id="about">
+  <div class="wrap split">
+    <div class="photo">
+      <img src="assets/caitlyn-headshot.jpg" alt="Caitlyn Verdugo, founder of GA Compliance Pro" width="840" height="840" loading="lazy">
+    </div>
+    <div class="about-text">
+      <p class="label">About</p>
+      <h2>Built by a Georgia Realtor, for Georgia brokerages.</h2>
+      <p class="intro">GA Compliance Pro was founded by Caitlyn Verdugo, a licensed Georgia Realtor with Keller Williams Metro Atlanta. What started as an internal compliance system for a handful of KW offices grew into a service that now tracks over 1,700 agents across metro Atlanta.</p>
+      <p class="intro about-more" id="about-more-1">Since implementing this system, license lapses across our current offices have dropped by roughly 90%. We built it because the problem was real and the existing solutions weren't working.</p>
+      <p class="intro about-more">We know Georgia licensing. We know GREC. And we know how much time your team spends on something that should run itself.</p>
+      <button type="button" class="read-more" data-attr="about_read_more" aria-controls="about-more-1">Read more</button>
+      <div class="signature">
+        <p class="signature-name">Caitlyn Verdugo</p>
+        <p class="signature-role">Founder · Licensed Georgia Realtor</p>
+      </div>
+    </div>
   </div>
 </section>
 
-<!-- CTA -->
-<section class="cta-section" id="contact">
-  <h2>Ready to hand this off?</h2>
-  <p>Book a 15-minute call and we'll walk you through exactly how it works for your office.</p>
-  <a href="mailto:caitlyn@gacompliancepro.com" class="btn-primary">caitlyn@gacompliancepro.com</a>
+<!-- FAQ -->
+<section id="faq" class="light">
+  <div class="wrap">
+    <p class="label">FAQ</p>
+    <h2>Common questions</h2>
+    <div class="faqs">
+      <div class="faq">
+        <button type="button" data-attr="faq_get_started" aria-expanded="false" aria-controls="faq-a-1"><span class="faq-q">What do you need from us to get started?</span><span class="faq-icon" aria-hidden="true">+</span></button>
+        <p class="faq-a" id="faq-a-1" hidden>We connect to your roster and GREC profile and ask a few quick questions about your preferences. Reminders start going out the very next month.</p>
+      </div>
+      <div class="faq">
+        <button type="button" data-attr="faq_monthly_effort" aria-expanded="false" aria-controls="faq-a-2"><span class="faq-q">Does my staff have to do anything each month?</span><span class="faq-icon" aria-hidden="true">+</span></button>
+        <p class="faq-a" id="faq-a-2" hidden>Nope. We work from the roster your team already uses to track agents. Nothing extra to do.</p>
+      </div>
+      <div class="faq">
+        <button type="button" data-attr="faq_requirements" aria-expanded="false" aria-controls="faq-a-3"><span class="faq-q">Which requirements do you track?</span><span class="faq-icon" aria-hidden="true">+</span></button>
+        <p class="faq-a" id="faq-a-3" hidden>CE and Law hours, plus whether each agent has completed Code of Ethics and Fair Housing for the current cycle. Qualifying and associate brokers get the same reminders, plus their Broker CE requirements. Every reminder includes links to the right courses on The CE Shop, so they can get them done quickly. Once everything is complete, we remind them to pay the $100 renewal fee and renew on GREC.</p>
+      </div>
+      <div class="faq">
+        <button type="button" data-attr="faq_reporting" aria-expanded="false" aria-controls="faq-a-4"><span class="faq-q">What does reporting look like?</span><span class="faq-icon" aria-hidden="true">+</span></button>
+        <p class="faq-a" id="faq-a-4" hidden>Each monthly report has three sections:
+• Agents reminded this month: everyone who got a renewal reminder, their renewal window and current CE status.
+• Agents we couldn't reach: anyone not found in GREC (often a name mismatch or data entry issue), missing from your roster, or whose email bounced, unsubscribed or was blocked.
+• Agents who disappeared from GREC: anyone who had a month or less left last month and no longer shows up. They've likely lapsed, so your office can follow up and find out whether it was intentional.</p>
+      </div>
+      <div class="faq">
+        <button type="button" data-attr="faq_post_license" aria-expanded="false" aria-controls="faq-a-5"><span class="faq-q">Do you track post-license requirements?</span><span class="faq-icon" aria-hidden="true">+</span></button>
+        <p class="faq-a" id="faq-a-5" hidden>No. We focus on the four-year license renewal and everything it requires.</p>
+      </div>
+      <div class="faq">
+        <button type="button" data-attr="faq_customize" aria-expanded="false" aria-controls="faq-a-6"><span class="faq-q">Can we change the reminder timeline?</span><span class="faq-icon" aria-hidden="true">+</span></button>
+        <p class="faq-a" id="faq-a-6" hidden>Yes. We recommend reminders at 12, 6, 3, 2 and 1 month out, but your timeline can include any months you like, such as 18 or 9 months out.</p>
+      </div>
+      <div class="faq">
+        <button type="button" data-attr="faq_setup_time" aria-expanded="false" aria-controls="faq-a-7"><span class="faq-q">How long does setup take?</span><span class="faq-icon" aria-hidden="true">+</span></button>
+        <p class="faq-a" id="faq-a-7" hidden>Only as long as it takes your team to get us the information. Once we have it, reminders start the next month.</p>
+      </div>
+      <div class="faq">
+        <button type="button" data-attr="faq_contract" aria-expanded="false" aria-controls="faq-a-8"><span class="faq-q">Is there a contract?</span><span class="faq-icon" aria-hidden="true">+</span></button>
+        <p class="faq-a" id="faq-a-8" hidden>Yes. We send a simple contract that spells out our services and each side's responsibilities.</p>
+      </div>
+      <div class="faq">
+        <button type="button" data-attr="faq_agent_leaves" aria-expanded="false" aria-controls="faq-a-9"><span class="faq-q">What happens when an agent leaves?</span><span class="faq-icon" aria-hidden="true">+</span></button>
+        <p class="faq-a" id="faq-a-9" hidden>Nothing changes on your end. Once an agent is removed from your GREC profile, they stop receiving reminders.</p>
+      </div>
+      <div class="faq">
+        <button type="button" data-attr="faq_data_security" aria-expanded="false" aria-controls="faq-a-10"><span class="faq-q">How do you handle our data?</span><span class="faq-icon" aria-hidden="true">+</span></button>
+        <p class="faq-a" id="faq-a-10" hidden>We take data security seriously. Your data is only ever used for one purpose: making sure your agents renew on time and your office stays compliant.</p>
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- FOOTER -->
+<!-- CONTACT -->
+<section id="contact" class="dark">
+  <div class="wrap contact-grid">
+    <div>
+      <h2>Ready to hand this off?</h2>
+      <p class="contact-sub">Book a 15-minute call and we'll walk you through exactly how it works for your office.</p>
+    </div>
+    <div class="contact-actions">
+      <a href="mailto:Caitlyn@GACompliancePro.com?subject=Book%20a%2015-minute%20call" class="btn btn-lg" data-attr="footer_cta_book_call">Book a 15-minute call</a>
+      <p class="contact-email">or email <a href="mailto:Caitlyn@GACompliancePro.com" data-attr="cta_email_link">Caitlyn@GACompliancePro.com</a></p>
+    </div>
+  </div>
+</section>
+
+</main>
+
 <footer>
-  <p>© 2026 GA Compliance Pro &nbsp;·&nbsp; <a href="mailto:caitlyn@gacompliancepro.com">caitlyn@gacompliancepro.com</a> &nbsp;·&nbsp; Georgia Real Estate License Compliance Services</p>
+  <div class="footer-inner">
+    <p>© 2026 GA Compliance Pro · Georgia Real Estate License Compliance Services</p>
+    <a href="mailto:Caitlyn@GACompliancePro.com" data-attr="footer_email">Caitlyn@GACompliancePro.com</a>
+  </div>
 </footer>
+
+<script>
+(function () {
+  var sm = window.matchMedia('(max-width: 639px)');
+
+  // Problem cards: accordion on phones only, static elsewhere.
+  var problems = document.querySelectorAll('.problem');
+  function syncProblems() {
+    problems.forEach(function (card) {
+      var btn = card.querySelector('button');
+      if (sm.matches) {
+        btn.disabled = false;
+        btn.setAttribute('aria-expanded', card.classList.contains('open') ? 'true' : 'false');
+      } else {
+        btn.disabled = true;
+        btn.removeAttribute('aria-expanded');
+      }
+    });
+  }
+  problems.forEach(function (card) {
+    card.querySelector('button').addEventListener('click', function () {
+      var wasOpen = card.classList.contains('open');
+      problems.forEach(function (c) {
+        c.classList.remove('open');
+        c.querySelector('.toggle-icon').textContent = '+';
+      });
+      if (!wasOpen) {
+        card.classList.add('open');
+        card.querySelector('.toggle-icon').textContent = '−';
+      }
+      syncProblems();
+    });
+  });
+  sm.addEventListener('change', syncProblems);
+  syncProblems();
+
+  // About: "Read more" on phones.
+  var about = document.getElementById('about');
+  about.querySelector('.read-more').addEventListener('click', function () {
+    about.classList.add('expanded');
+  });
+
+  // FAQ: one item open at a time.
+  var faqs = document.querySelectorAll('.faq');
+  faqs.forEach(function (item) {
+    item.querySelector('button').addEventListener('click', function () {
+      var wasOpen = this.getAttribute('aria-expanded') === 'true';
+      faqs.forEach(function (f) {
+        f.querySelector('button').setAttribute('aria-expanded', 'false');
+        f.querySelector('.faq-icon').textContent = '+';
+        f.querySelector('.faq-a').hidden = true;
+      });
+      if (!wasOpen) {
+        this.setAttribute('aria-expanded', 'true');
+        item.querySelector('.faq-icon').textContent = '−';
+        item.querySelector('.faq-a').hidden = false;
+      }
+    });
+  });
+})();
+</script>
 
 </body>
 </html>
