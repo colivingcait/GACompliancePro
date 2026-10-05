@@ -39,7 +39,7 @@ A PostHog snippet in `<head>` loads only once `window.POSTHOG_KEY` is set to a r
 
 ## Pending updates
 
-- [x] **Booking link:** the "Book a 15-minute call" button in `#contact` opens the Google Calendar booking page (https://calendar.app.google/XsjKQ2XaTnitZFpUA) in a new tab. The header and hero buttons scroll to `#contact`.
+- [x] **Booking link:** all three "Book a call" buttons (header, hero, `#contact`) open the Google Calendar booking page (https://calendar.app.google/XsjKQ2XaTnitZFpUA) in a new tab.
 - [ ] **PostHog:** replace `REPLACE_WITH_POSTHOG_PROJECT_KEY` with the project key.
 - [ ] **Open Graph tags:** add title, description and image for link previews. (The favicon is done: `favicon.svg`, `favicon.ico` and `apple-touch-icon.png`.)
 - [ ] **Phone number:** add one to the footer, if wanted.
