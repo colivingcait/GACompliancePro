@@ -306,7 +306,21 @@ if (/^phc_/.test(window.POSTHOG_KEY)) {
     border-bottom: 1px solid rgba(255,255,255,0.18);
   }
   .feature .label { padding-top: 6px; margin: 0; }
-  .feature h3 { font-size: 25px; font-weight: 600; line-height: 1.3; margin-bottom: 10px; }
+  .feature h3 { font-size: 25px; font-weight: 600; line-height: 1.3; }
+  .feature h3 button {
+    all: unset;
+    box-sizing: border-box;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 16px;
+    cursor: pointer;
+  }
+  .feature h3 button:hover { color: var(--gold-light); }
+  .feature h3 button:focus-visible { outline: 2px solid var(--gold); outline-offset: 4px; }
+  .feature .toggle-icon { font-size: 24px; font-weight: 400; line-height: 1; color: var(--gold-light); flex: none; }
+  .feature p.feature-desc { margin-top: 10px; }
   .feature p.feature-desc { font-size: 18px; line-height: 1.65; color: rgba(255,255,255,0.86); text-wrap: pretty; }
 
   /* PRICING */
@@ -675,29 +689,29 @@ if (/^phc_/.test(window.POSTHOG_KEY)) {
       <div class="feature">
         <p class="label">01 Tracking</p>
         <div>
-          <h3>Automated renewal tracking</h3>
-          <p class="feature-desc">We pull directly from GREC every month and track CE, Law, Code of Ethics and Fair Housing against both GREC and NAR requirements. When GREC, GAR or NAR rules change, we update them.</p>
+          <h3><button type="button" data-attr="included_tracking" aria-expanded="false" aria-controls="feature-d-1">Automated renewal tracking<span class="toggle-icon" aria-hidden="true">+</span></button></h3>
+          <p class="feature-desc" id="feature-d-1" hidden>We pull directly from GREC every month and track CE, Law, Code of Ethics and Fair Housing against both GREC and NAR requirements. When GREC, GAR or NAR rules change, we update them.</p>
         </div>
       </div>
       <div class="feature">
         <p class="label">02 Reminders</p>
         <div>
-          <h3>Personalized agent and broker emails</h3>
-          <p class="feature-desc">Agents and brokers each get their own status, including the new broker CE requirements. Notification timelines and leadership loop-ins adjust to how your office runs.</p>
+          <h3><button type="button" data-attr="included_reminders" aria-expanded="false" aria-controls="feature-d-2">Personalized agent and broker emails<span class="toggle-icon" aria-hidden="true">+</span></button></h3>
+          <p class="feature-desc" id="feature-d-2" hidden>Agents and brokers each get their own status, including the new broker CE requirements. Notification timelines and leadership loop-ins adjust to how your office runs.</p>
         </div>
       </div>
       <div class="feature">
         <p class="label">03 Reporting</p>
         <div>
-          <h3>Monthly leadership report</h3>
-          <p class="feature-desc">Delivered to your team every month, on time: who was reminded, their renewal window and requirements status, anyone we couldn't reach because of a GREC/roster mismatch and any lapsed agents from the prior month. Individualized read &amp; click receipts available on request.</p>
+          <h3><button type="button" data-attr="included_reporting" aria-expanded="false" aria-controls="feature-d-3">Monthly leadership report<span class="toggle-icon" aria-hidden="true">+</span></button></h3>
+          <p class="feature-desc" id="feature-d-3" hidden>Delivered to your team every month, on time: who was reminded, their renewal window and requirements status, anyone we couldn't reach because of a GREC/roster mismatch and any lapsed agents from the prior month. Individualized read &amp; click receipts available on request.</p>
         </div>
       </div>
       <div class="feature">
         <p class="label">04 Lapse alerts</p>
         <div>
-          <h3>Know about lapses within days</h3>
-          <p class="feature-desc">Most licenses lapse silently. Our report flags any agent whose license lapses, so you find out within a few days, not in the middle of their next closing.</p>
+          <h3><button type="button" data-attr="included_lapse_alerts" aria-expanded="false" aria-controls="feature-d-4">Know about lapses within days<span class="toggle-icon" aria-hidden="true">+</span></button></h3>
+          <p class="feature-desc" id="feature-d-4" hidden>Most licenses lapse silently. Our report flags any agent whose license lapses, so you find out within a few days, not in the middle of their next closing.</p>
         </div>
       </div>
     </div>
@@ -883,6 +897,24 @@ Individualized read &amp; click receipts are available for agent accountability.
   var about = document.getElementById('about');
   about.querySelector('.read-more').addEventListener('click', function () {
     about.classList.add('expanded');
+  });
+
+  // What's included: one row open at a time.
+  var features = document.querySelectorAll('.feature');
+  features.forEach(function (row) {
+    row.querySelector('button').addEventListener('click', function () {
+      var wasOpen = this.getAttribute('aria-expanded') === 'true';
+      features.forEach(function (f) {
+        f.querySelector('button').setAttribute('aria-expanded', 'false');
+        f.querySelector('.toggle-icon').textContent = '+';
+        f.querySelector('.feature-desc').hidden = true;
+      });
+      if (!wasOpen) {
+        this.setAttribute('aria-expanded', 'true');
+        row.querySelector('.toggle-icon').textContent = '−';
+        row.querySelector('.feature-desc').hidden = false;
+      }
+    });
   });
 
   // FAQ: one item open at a time.

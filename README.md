@@ -35,7 +35,7 @@ Breakpoints are at `max-width: 979px` (tablet) and `max-width: 639px` (phone).
 
 ## Analytics
 
-A PostHog snippet in `<head>` loads only once `window.POSTHOG_KEY` is set to a real key (one that starts with `phc_`). Clickable elements carry `data-attr` names (`hero_book_call`, `faq_reporting` and so on) for autocapture. Keep those names unchanged.
+A PostHog snippet in `<head>` loads only once `window.POSTHOG_KEY` is set to a real key (one that starts with `phc_`). Clickable elements carry `data-attr` names (`hero_book_call`, `faq_reporting`, `included_reporting` and so on) for autocapture. Keep those names unchanged.
 
 ## Pending updates
 
