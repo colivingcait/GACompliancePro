@@ -40,7 +40,7 @@ A PostHog snippet in `<head>` loads only once `window.POSTHOG_KEY` is set to a r
 ## Pending updates
 
 - [x] **Booking link:** all three "Book a call" buttons (header, hero, `#contact`) open the Google Calendar booking page (https://calendar.app.google/XsjKQ2XaTnitZFpUA) in a new tab.
-- [ ] **PostHog:** replace `REPLACE_WITH_POSTHOG_PROJECT_KEY` with the project key.
+- [x] **PostHog:** connected (US region, `us.i.posthog.com`). If the project is ever moved to EU, change `POSTHOG_HOST` to `https://eu.i.posthog.com`.
 - [ ] **Open Graph tags:** add title, description and image for link previews. (The favicon is done: `favicon.svg`, `favicon.ico` and `apple-touch-icon.png`.)
 - [ ] **Phone number:** add one to the footer, if wanted.
 - [ ] **Stats:** "1,700+ agents" appears in the hero stats and in the About section. Update both when it changes.
