@@ -37,6 +37,8 @@ Breakpoints are at `max-width: 979px` (tablet) and `max-width: 639px` (phone).
 
 A PostHog snippet in `<head>` loads only once `window.POSTHOG_KEY` is set to a real key (one that starts with `phc_`). Clickable elements carry `data-attr` names (`hero_book_call`, `faq_reporting`, `included_reporting` and so on) for autocapture. Keep those names unchanged.
 
+Each "Book a call" button also sends a `book_a_call_clicked` event with a `location` property (`header`, `hero` or `contact`).
+
 ## Pending updates
 
 - [x] **Booking link:** all three "Book a call" buttons (header, hero, `#contact`) open the Google Calendar booking page (https://calendar.app.google/XsjKQ2XaTnitZFpUA) in a new tab.

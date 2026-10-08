@@ -860,6 +860,16 @@ Individualized read &amp; click receipts are available for agent accountability.
 
 <script>
 (function () {
+  // Booking buttons: send a named event to PostHog, tagged with which button was used.
+  var bookingLocations = { nav_book_call: 'header', hero_book_call: 'hero', footer_cta_book_call: 'contact' };
+  document.querySelectorAll('[data-attr$="_book_call"]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      if (window.posthog && window.posthog.capture) {
+        window.posthog.capture('book_a_call_clicked', { location: bookingLocations[btn.dataset.attr] });
+      }
+    });
+  });
+
   var sm = window.matchMedia('(max-width: 639px)');
 
   // Problem cards: accordion on phones only, static elsewhere.
